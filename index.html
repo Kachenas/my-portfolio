@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chester Almonte</title>
+
+  <link rel="shortcut icon" href="./assets/images/avatar-profile.webp" type="image/x-icon">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./assets/images/avatar-profile.webp" alt="Chester Almonte" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Chester Almonte">Chester Almonte</h1>
+
+          <p class="title">Full Stack Web developer</p> <br>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:almonte.s.chester@gmail.com" class="contact-link">almonte.s.chester@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+12133522795" class="contact-link">(+63) 9274458838</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">July 4, 1992</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Dagupan, Pangasinan, PHILIPPINES</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.facebook.com/Kachenas/" class="social-link">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/chester-almonte-17692972/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://github.com/Kachenas" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm Chester Almonte and I am a Web Developer that has 5 years of Working Experience in my field. 
+            I mainly handle backend development which uses Laravel for the creation of API, but also have a working 
+            knowledge of implementing frontend technologies such as HTML, CSS, Bootstrap, JQuery, Javascript and Vue.
+          </p>
+
+          <p>
+            I have created complex systems and websites from the ground up and I am comfortable working with both front-end and back-end technologies. 
+            In addition to my technical skills, I am an excellent communicator and problem solver. 
+          </p>
+
+          <p>
+            I am constantly striving to stay ahead of the curve. My strong problem-solving and communication skills have 
+            enabled me to successfully collaborate with others on large-scale projects.
+          </p>
+
+          <p> I have a proven track record of developing innovative solutions to complex problems and working collaboratively with designers, 
+            developers, and other stakeholders to ensure projects are successful. I understand the importance of utilizing the latest 
+            technologies and trends in web development.
+          </p>
+        </section>
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  The most modern and high-quality design made at a professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Colegio de Dagupan</h4>
+
+              <span>2008-2012</span>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Dagupan City National High Schoolt</h4>
+
+              <span>2004-2008</span>
+
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">College of St. Michael the Archangel</h4>
+
+              <span>1996 — 2004</span>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Web Developer - Petnet Inc</h4>
+
+              <span>07/2020 - 04/2023</span>
+
+              <p class="timeline-text">
+                Created automated reports, integrated new features and updates to existing system. Implemented 3rd party api's and upgraded legacy system. 
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Web Developer - SLI Consulting Inc </h4>
+
+              <span>03/2019 — 06/2020</span>
+
+              <p class="timeline-text">
+                Performed technical assistance to users, added new specifications and created a system from scratch. 
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">SQL Programmer - SLI Consulting Inc</h4>
+
+              <span>07/2018 — 02/2019</span>
+
+              <p class="timeline-text">
+                Performed product retrievals and insertion. Prepared scripts for reports generation, and created a module for an inventory system.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Web Developer - Nusku Inc</h4>
+
+              <span>03/2018 — 07/2018</span>
+
+              <p class="timeline-text">
+                Convert mock up designs into Theme template for use in WordPress using HTML, CSS, JavaScript.
+                Discussed site and app requirements with clients to produce actionable development plans and budgets.
+              </p>
+
+            </li>
+
+          </ol>
+
+          <button class="form-btn">
+            <ion-icon name="paper-plane"></ion-icon>
+            <span><a href ="https://drive.google.com/file/d/1-a6qiSP2SQDeVaTX8s4fMhT2p5m0kjiX/view?usp=drive_link" attributes-list download >Download Resume </a>  </span>
+          </button>
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <div class="grid-container">
+            <div class="title-wrapper-skills">
+              <h5 class="h5">HTML</h5>
+              <img src="./assets/images/logos/html.png" alt="html" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">CSS</h5>
+              <img src="./assets/images/logos/css.png" alt="css" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">Javascript</h5>
+              <img src="./assets/images/logos/javascript.png" alt="javascript" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">PHP</h5>
+              <img src="./assets/images/logos/php.png" alt="php" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">Bootstrap</h5>
+              <img src="./assets/images/logos/bootstrap.png" alt="bootstrap" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">Git</h5>
+              <img src="./assets/images/logos/git.png" alt="git" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">MySQL</h5>
+              <img src="./assets/images/logos/mysql.png" alt="mysql" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">Node</h5>
+              <img src="./assets/images/logos/node.png" alt="node" loading="lazy" class="skill-img">
+            </div>
+
+            <div class="title-wrapper-skills">
+              <h5 class="h5">Vue</h5>
+              <img src="./assets/images/logos/vue.png" alt="vue" loading="lazy" class="skill-img">
+            </div>
+          </div>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web design</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Wordpress</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Web development</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web design</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Wordpress</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Web development</button>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <ul class="project-list">
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 1.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Ecommerce</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 2.png" alt="loan system" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Loan System</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 5.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Simple Reading</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="wordpress">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 8.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Bloggerslane</h3>
+
+                <p class="project-category">Wordpress</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 6.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Kalerki</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 7.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Los Angeles Mountain Hike</h3>
+
+                <p class="project-category">Web design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 4.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">BandaPinoizze</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="wordpress">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 9.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Kachenas</h3>
+
+                <p class="project-category">Wordpress</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="web development">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-image/project 3.png" alt="ecommerce" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">SneakerThirst</h3>
+
+                <p class="project-category">Web development</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script  type = "module" src="./assets/js/script.js"></script>
+  <script src="./assets/js/tsparticles.bundle.min.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
