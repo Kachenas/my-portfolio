@@ -1,8 +1,8 @@
 'use strict';
 
-import optionParticles from '../js/options/connect.json' assert {type: 'json'};
-
-tsParticles.load("tsparticles", optionParticles);
+fetch('./assets/js/options/connect.json')
+  .then(response => response.json())
+  .then(optionParticles => tsParticles.load("tsparticles", optionParticles));
 
 
 
