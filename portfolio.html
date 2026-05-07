@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chester Almonte — Full Stack Developer</title>
+  <meta name="description" content="Chester Almonte — Full Stack Web Developer with 7+ years of experience building scalable applications." />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Variable Font: Inter (weight axis 100-900) + Space Grotesk for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+  <!-- Locomotive Scroll CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME SYSTEM
+       ========================================================================== */
+    :root {
+      /* Dark theme (default) */
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-tertiary: #1a1a1a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #888888;
+      --text-muted: #555555;
+      --accent: #c8ff00;
+      --accent-dim: rgba(200, 255, 0, 0.15);
+      --border: #222222;
+      --card-bg: #141414;
+      --overlay: rgba(0, 0, 0, 0.6);
+      --cursor-color: #c8ff00;
+      --nav-bg: rgba(10, 10, 10, 0.85);
+      --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      /* Typography scale */
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+      --fs-hero: clamp(3.5rem, 10vw, 10rem);
+      --fs-section: clamp(2.5rem, 6vw, 6rem);
+      --fs-subtitle: clamp(1.1rem, 2vw, 1.5rem);
+      --fs-body: clamp(0.95rem, 1.2vw, 1.1rem);
+      --fs-small: clamp(0.75rem, 1vw, 0.875rem);
+      --fs-nav: clamp(0.85rem, 1vw, 0.95rem);
+
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 8rem;
+      --space-2xl: 12rem;
+
+      /* Layout */
+      --container-max: 1440px;
+      --gutter: clamp(1.5rem, 4vw, 4rem);
+    }
+
+    /* Light theme */
+    [data-theme="light"] {
+      --bg-primary: #f5f5f0;
+      --bg-secondary: #eaeae5;
+      --bg-tertiary: #e0e0db;
+      --text-primary: #0a0a0a;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --accent: #0041ff;
+      --accent-dim: rgba(0, 65, 255, 0.1);
+      --border: #d0d0cb;
+      --card-bg: #ededea;
+      --overlay: rgba(245, 245, 240, 0.6);
+      --cursor-color: #0041ff;
+      --nav-bg: rgba(245, 245, 240, 0.85);
+    }
+
+    /* ==========================================================================
+       RESET & BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html.has-scroll-smooth {
+      overflow: hidden;
+    }
+
+    html.has-scroll-smooth body {
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: none;
+      transition: background-color 0.6s ease, color 0.6s ease;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: none;
+    }
+
+    button {
+      cursor: none;
+      border: none;
+      background: none;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    /* ==========================================================================
+       CUSTOM CURSOR
+       ========================================================================== */
+    .cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--cursor-color);
+      pointer-events: none;
+      z-index: 10000;
+      mix-blend-mode: difference;
+      will-change: transform, width, height;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s var(--transition-spring),
+                  height 0.3s var(--transition-spring),
+                  background 0.3s ease;
+    }
+
+    .cursor.is-hovering {
+      width: 50px;
+      height: 50px;
+      background: #ffffff;
+    }
+
+    .cursor-trail {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--cursor-color);
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      will-change: transform;
+      transform: translate(-50%, -50%);
+      opacity: 0.5;
+      transition: width 0.4s var(--transition-spring),
+                  height 0.4s var(--transition-spring),
+                  opacity 0.3s ease;
+    }
+
+    .cursor-trail.is-hovering {
+      width: 60px;
+      height: 60px;
+      opacity: 0.2;
+    }
+
+    /* Hide cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto; }
+      a, button { cursor: pointer; }
+      .cursor, .cursor-trail { display: none; }
+    }
+
+    /* ==========================================================================
+       LOADING SCREEN
+       ========================================================================== */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .loader__text {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .loader__text span {
+      display: inline-block;
+    }
+
+    .loader__bar {
+      width: 200px;
+      height: 1px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loader__bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+    }
+
+    /* ==========================================================================
+       NAVIGATION
+       ========================================================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: var(--space-sm) var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: var(--nav-bg);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease, background 0.6s ease;
+    }
+
+    .nav.scrolled {
+      border-bottom-color: var(--border);
+    }
+
+    .nav__logo {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .nav__logo span {
+      color: var(--accent);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.5rem, 3vw, 3rem);
+    }
+
+    .nav__link {
+      font-size: var(--fs-nav);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 0.25rem 0;
+      transition: font-weight 0.3s ease, color 0.3s ease;
+      font-variation-settings: 'wght' 400;
+    }
+
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.4s var(--transition-smooth);
+    }
+
+    .nav__link:hover {
+      font-variation-settings: 'wght' 700;
+      color: var(--accent);
+    }
+
+    .nav__link:hover::after {
+      width: 100%;
+    }
+
+    .nav__actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      width: 44px;
+      height: 24px;
+      background: var(--border);
+      border-radius: 12px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+
+    .theme-toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.3s var(--transition-spring);
+    }
+
+    [data-theme="light"] .theme-toggle::after {
+      transform: translateX(20px);
+    }
+
+    /* Mobile menu toggle */
+    .nav__menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px;
+    }
+
+    .nav__menu-btn span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-primary);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav__menu-btn.active span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 5px);
+    }
+    .nav__menu-btn.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav__menu-btn.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(4px, -5px);
+    }
+
+    /* Mobile menu overlay */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-menu .nav__link {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-family: var(--font-heading);
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__menu-btn { display: flex; }
+    }
+
+    /* ==========================================================================
+       LAYOUT UTILITIES
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section {
+      padding: var(--space-xl) 0;
+      position: relative;
+    }
+
+    .section__label {
+      font-size: var(--fs-small);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section__label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section__title {
+      font-family: var(--font-heading);
+      font-size: var(--fs-section);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-lg);
+    }
+
+    .section__divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Reveal animation base state */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      will-change: opacity, transform;
+    }
+
+    .reveal-line {
+      overflow: hidden;
+    }
+
+    .reveal-line span {
+      display: inline-block;
+      transform: translateY(100%);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: var(--space-xl);
+      padding-top: calc(var(--space-xl) + 60px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: clamp(8rem, 25vw, 25rem);
+      font-weight: 700;
+      color: var(--border);
+      opacity: 0.3;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .hero__greeting {
+      font-size: var(--fs-subtitle);
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .hero__name {
+      font-family: var(--font-heading);
+      font-size: var(--fs-hero);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero__name .accent {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero__title-line {
+      overflow: hidden;
+      display: block;
+    }
+
+    .hero__title-line span {
+      display: inline-block;
+    }
+
+    .hero__info {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+      margin-top: var(--space-lg);
+    }
+
+    .hero__description {
+      max-width: 480px;
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .hero__stats {
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .hero__stat {
+      text-align: center;
+    }
+
+    .hero__stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .hero__stat-label {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+    }
+
+    .hero__scroll-indicator {
+      position: absolute;
+      bottom: var(--space-md);
+      right: var(--gutter);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 2;
+    }
+
+    .hero__scroll-text {
+      writing-mode: vertical-rl;
+      font-size: var(--fs-small);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero__scroll-line {
+      width: 1px;
+      height: 60px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--accent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ==========================================================================
+       MARQUEE (Running Text Strip)
+       ========================================================================== */
+    .marquee {
+      overflow: hidden;
+      padding: var(--space-md) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee__inner {
+      display: flex;
+      white-space: nowrap;
+      will-change: transform;
+    }
+
+    .marquee__item {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      padding: 0 var(--space-lg);
+      color: transparent;
+      -webkit-text-stroke: 1px var(--text-muted);
+      flex-shrink: 0;
+      transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+    }
+
+    .marquee__item:nth-child(even) {
+      color: var(--text-primary);
+      -webkit-text-stroke: 0;
+    }
+
+    .marquee__separator {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 var(--space-sm);
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       FEATURED WORK / PROJECTS
+       ========================================================================== */
+    .work {
+      background: var(--bg-primary);
+    }
+
+    .project-grid {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .project-card {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card-bg);
+      transition: transform 0.6s var(--transition-smooth),
+                  border-color 0.3s ease;
+      will-change: transform;
+    }
+
+    .project-card:hover {
+      transform: scale(1.02);
+      border-color: var(--accent);
+    }
+
+    .project-card__image-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--bg-tertiary);
+    }
+
+    .project-card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s var(--transition-smooth);
+      will-change: transform;
+    }
+
+    .project-card:hover .project-card__image {
+      transform: scale(1.08);
+    }
+
+    /* Hover overlay image */
+    .project-card__hover-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-card:hover .project-card__hover-image {
+      opacity: 1;
+    }
+
+    .project-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .project-card__overlay {
+      opacity: 1;
+    }
+
+    .project-card__content {
+      padding: var(--space-md);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-sm);
+    }
+
+    .project-card__number {
+      font-family: var(--font-heading);
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .project-card__info {
+      flex: 1;
+    }
+
+    .project-card__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .project-card:hover .project-card__title {
+      color: var(--accent);
+    }
+
+    .project-card__desc {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .project-card__tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .project-card__tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+
+    .project-card:hover .project-card__tag {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .project-card__arrow {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      transition: color 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+      padding-top: 0.25rem;
+    }
+
+    .project-card:hover .project-card__arrow {
+      color: var(--accent);
+      transform: translate(3px, -3px);
+    }
+
+    /* Large / featured card layout */
+    .project-grid--featured {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 768px) {
+      .project-grid--featured {
+        grid-template-columns: 1fr 1fr;
+      }
+      .project-grid--featured .project-card--wide {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* Project card hidden by filter */
+    .project-card.is-hidden {
+      display: none;
+    }
+
+    /* Category filter buttons */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .filter-btn {
+      font-size: var(--fs-small);
+      font-weight: 500;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--text-primary);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    /* ==========================================================================
+       SERVICES SECTION
+       ========================================================================== */
+    .services {
+      background: var(--bg-secondary);
+      transition: background 0.6s ease;
+    }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    @media (min-width: 768px) {
+      .services__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .service-item {
+      padding: var(--space-lg) var(--space-md);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+
+    @media (min-width: 768px) {
+      .service-item {
+        border-right: 1px solid var(--border);
+      }
+      .service-item:nth-child(2n) {
+        border-right: none;
+      }
+    }
+
+    .service-item:hover {
+      background: var(--accent-dim);
+    }
+
+    .service-item__number {
+      font-family: var(--font-heading);
+      font-size: var(--fs-small);
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.1em;
+    }
+
+    .service-item__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      transition: color 0.3s ease;
+    }
+
+    .service-item:hover .service-item__title {
+      color: var(--accent);
+    }
+
+    .service-item__desc {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 400px;
+    }
+
+    .service-item__icon {
+      position: absolute;
+      top: var(--space-lg);
+      right: var(--space-md);
+      font-size: 2.5rem;
+      color: var(--border);
+      transition: color 0.3s ease, transform 0.5s var(--transition-spring);
+    }
+
+    .service-item:hover .service-item__icon {
+      color: var(--accent);
+      transform: rotate(-15deg) scale(1.1);
+    }
+
+    /* Skills Tags */
+    .skills-strip {
+      padding: var(--space-lg) 0;
+    }
+
+    .skills-strip__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .skill-tag {
+      font-size: var(--fs-small);
+      font-weight: 500;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ==========================================================================
+       ABOUT SECTION
+       ========================================================================== */
+    .about__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    @media (min-width: 900px) {
+      .about__layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .about__text {
+      font-size: var(--fs-body);
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .about__text p + p {
+      margin-top: var(--space-sm);
+    }
+
+    .about__highlight {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text-primary);
+      border-left: 3px solid var(--accent);
+      padding-left: var(--space-md);
+    }
+
+    .about__experience {
+      margin-top: var(--space-lg);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .experience-item__company {
+      font-family: var(--font-heading);
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .experience-item__role {
+      font-size: var(--fs-small);
+      color: var(--text-secondary);
+    }
+
+    .experience-item__date {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       CONTACT SECTION
+       ========================================================================== */
+    .contact {
+      background: var(--bg-secondary);
+      transition: background 0.6s ease;
+    }
+
+    .contact__layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    @media (min-width: 900px) {
+      .contact__layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .contact__cta {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .contact__cta .accent {
+      color: var(--accent);
+    }
+
+    .contact__details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .contact__item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .contact__item-label {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .contact__item-value {
+      font-size: var(--fs-subtitle);
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .contact__item-value:hover {
+      color: var(--accent);
+    }
+
+    .contact__socials {
+      display: flex;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .contact__social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .contact__social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .contact__social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .footer {
+      padding: var(--space-md) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .footer__text {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+    }
+
+    .footer__back-top {
+      font-size: var(--fs-small);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer__back-top:hover {
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADJUSTMENTS
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: calc(var(--space-lg) + 60px);
+        padding-bottom: var(--space-lg);
+        min-height: 90vh;
+      }
+
+      .hero__info {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .hero__stats {
+        gap: var(--space-md);
+      }
+
+      .hero__scroll-indicator {
+        display: none;
+      }
+
+      .hero__bg-text {
+        font-size: clamp(5rem, 20vw, 12rem);
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+
+      .project-grid--featured {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: var(--space-lg) 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --gutter: 1.25rem;
+      }
+
+      .hero__name {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================================================================
+       CUSTOM CURSOR
+       ====================================================================== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ======================================================================
+       LOADING SCREEN
+       ====================================================================== -->
+  <div class="loader" id="loader">
+    <div class="loader__text" id="loaderText">
+      <span>C</span><span>H</span><span>E</span><span>S</span><span>T</span><span>E</span><span>R</span>
+    </div>
+    <div class="loader__bar">
+      <div class="loader__bar-fill" id="loaderBar"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       NAVIGATION
+       ====================================================================== -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo" data-scroll-to>Chester<span>.</span></a>
+
+    <div class="nav__links" id="navLinks">
+      <a href="#hero" class="nav__link" data-scroll-to>Home</a>
+      <a href="#work" class="nav__link" data-scroll-to>Work</a>
+      <a href="#services" class="nav__link" data-scroll-to>Services</a>
+      <a href="#about" class="nav__link" data-scroll-to>About</a>
+      <a href="#contact" class="nav__link" data-scroll-to>Contact</a>
+    </div>
+
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+      <button class="nav__menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" class="nav__link" data-scroll-to data-mobile-link>Home</a>
+    <a href="#work" class="nav__link" data-scroll-to data-mobile-link>Work</a>
+    <a href="#services" class="nav__link" data-scroll-to data-mobile-link>Services</a>
+    <a href="#about" class="nav__link" data-scroll-to data-mobile-link>About</a>
+    <a href="#contact" class="nav__link" data-scroll-to data-mobile-link>Contact</a>
+  </div>
+
+  <!-- ======================================================================
+       MAIN SCROLL CONTAINER (Locomotive Scroll)
+       ====================================================================== -->
+  <div data-scroll-container id="scrollContainer">
+
+    <!-- ==================================================================
+         HERO SECTION
+         ================================================================== -->
+    <section class="hero section" id="hero" data-scroll-section>
+      <div class="hero__bg-text" data-scroll data-scroll-speed="-3" data-scroll-direction="horizontal">CA</div>
+
+      <div class="container hero__content">
+        <div class="reveal hero__greeting">Hello, I'm</div>
+
+        <h1 class="hero__name">
+          <span class="hero__title-line"><span>Chester</span></span>
+          <span class="hero__title-line accent"><span>Almonte</span></span>
+        </h1>
+
+        <div class="hero__info reveal">
+          <p class="hero__description">
+            Full Stack Web Developer with 7+ years of experience building
+            scalable applications, designing robust APIs, and crafting
+            seamless user experiences from concept to deployment.
+          </p>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="7">0</div>
+              <div class="hero__stat-label">Years Exp.</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="30">0</div>
+              <div class="hero__stat-label">Projects</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="6">0</div>
+              <div class="hero__stat-label">Companies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-indicator">
+        <span class="hero__scroll-text">Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         MARQUEE STRIP
+         ================================================================== -->
+    <div class="marquee" data-scroll-section>
+      <div class="marquee__inner" id="marquee">
+        <span class="marquee__item">Full Stack Developer</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Laravel &amp; Vue.js</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">API Architecture</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Cloud &amp; DevOps</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Full Stack Developer</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Laravel &amp; Vue.js</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">API Architecture</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Cloud &amp; DevOps</span>
+        <span class="marquee__separator">&diams;</span>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         FEATURED WORK
+         ================================================================== -->
+    <section class="work section" id="work" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">Selected Work</div>
+        <h2 class="section__title reveal">
+          Featured<br />Projects
+        </h2>
+
+        <!-- Category Filter -->
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web development">Web Development</button>
+          <button class="filter-btn" data-filter="web design">Web Design</button>
+          <button class="filter-btn" data-filter="wordpress">WordPress</button>
+        </div>
+
+        <div class="project-grid project-grid--featured" id="projectGrid">
+
+          <!-- 01 — Ecommerce -->
+          <div class="project-card project-card--wide reveal" data-category="web development" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 1.png" alt="Ecommerce Platform" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">01</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Ecommerce</h3>
+                <p class="project-card__desc">Full-stack e-commerce solution with inventory management, payment processing, and real-time order tracking.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">Vue.js</span>
+                  <span class="project-card__tag">MySQL</span>
+                  <span class="project-card__tag">REST API</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 02 — Loan System -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 2.png" alt="Loan System" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">02</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Loan System</h3>
+                <p class="project-card__desc">Financial platform with dynamic reporting, third-party remittance API integrations, and ERP modules for banking operations.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Vue.js</span>
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">PostgreSQL</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 03 — SneakerThirst -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 3.png" alt="SneakerThirst" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">03</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">SneakerThirst</h3>
+                <p class="project-card__desc">E-commerce web application for sneaker enthusiasts with catalog browsing, cart management, and checkout flow.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">JavaScript</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">MySQL</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 04 — BandaPinoizze -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 4.png" alt="BandaPinoizze" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">04</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">BandaPinoizze</h3>
+                <p class="project-card__desc">Community-driven web platform featuring dynamic content management and interactive user experiences.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">JavaScript</span>
+                  <span class="project-card__tag">Bootstrap</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 05 — Simple Reading -->
+          <div class="project-card reveal" data-category="web design" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 5.png" alt="Simple Reading" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">05</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Simple Reading</h3>
+                <p class="project-card__desc">Clean, minimal reading interface designed for distraction-free content consumption with elegant typography.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">UI/UX</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 06 — Kalerki -->
+          <div class="project-card reveal" data-category="web design" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 6.png" alt="Kalerki" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">06</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Kalerki</h3>
+                <p class="project-card__desc">Modern web design project focused on striking visual layouts and responsive design across all viewports.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">JavaScript</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 07 — Los Angeles Mountain Hike -->
+          <div class="project-card project-card--wide reveal" data-category="web design" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 7.png" alt="Los Angeles Mountain Hike" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">07</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Los Angeles Mountain Hike</h3>
+                <p class="project-card__desc">Immersive landing page design with scenic photography, smooth scroll interactions, and adventure-driven storytelling.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">Design</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 08 — Bloggerslane -->
+          <div class="project-card reveal" data-category="wordpress" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 8.png" alt="Bloggerslane" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">08</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Bloggerslane</h3>
+                <p class="project-card__desc">WordPress blogging platform with custom theme development, optimized content delivery, and responsive layouts.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">WordPress</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">CSS</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 09 — Kachenas -->
+          <div class="project-card reveal" data-category="wordpress" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 9.png" alt="Kachenas" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">09</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Kachenas</h3>
+                <p class="project-card__desc">Personal WordPress site with custom theme, portfolio showcase, and content management system integration.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">WordPress</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">JavaScript</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SERVICES SECTION
+         ================================================================== -->
+    <section class="services section" id="services" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">What I Do</div>
+        <h2 class="section__title reveal">
+          Services &amp;<br />Expertise
+        </h2>
+      </div>
+
+      <div class="container">
+        <div class="services__grid">
+
+          <div class="service-item reveal">
+            <div class="service-item__number">01</div>
+            <h3 class="service-item__title">Backend Development</h3>
+            <p class="service-item__desc">Scalable APIs and server-side architecture using Laravel, Node.js, and modern backend patterns. SOLID principles, clean code, and performance-first.</p>
+            <div class="service-item__icon">&lbrace;/&rbrace;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">02</div>
+            <h3 class="service-item__title">Frontend Engineering</h3>
+            <p class="service-item__desc">Building responsive, interactive interfaces with Vue.js, Nuxt.js, and modern JavaScript. Pixel-perfect translation from Figma to production.</p>
+            <div class="service-item__icon">&lt;/&gt;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">03</div>
+            <h3 class="service-item__title">Cloud &amp; DevOps</h3>
+            <p class="service-item__desc">Docker containerization, AWS deployment (ECS, EC2, S3), CI/CD pipelines with GitHub Actions, and infrastructure optimization with Redis caching.</p>
+            <div class="service-item__icon">&clubs;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">04</div>
+            <h3 class="service-item__title">Web Design</h3>
+            <p class="service-item__desc">Modern, high-quality interface design at a professional level. Clean layouts, intuitive UX, and responsive design that works across all devices.</p>
+            <div class="service-item__icon">&Delta;</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills Tags Strip -->
+      <div class="skills-strip" data-scroll-section>
+        <div class="container">
+          <div class="skills-strip__list">
+            <span class="skill-tag reveal">HTML5</span>
+            <span class="skill-tag reveal">CSS3</span>
+            <span class="skill-tag reveal">JavaScript</span>
+            <span class="skill-tag reveal">PHP</span>
+            <span class="skill-tag reveal">Laravel</span>
+            <span class="skill-tag reveal">Vue.js</span>
+            <span class="skill-tag reveal">Nuxt.js</span>
+            <span class="skill-tag reveal">Node.js</span>
+            <span class="skill-tag reveal">MySQL</span>
+            <span class="skill-tag reveal">PostgreSQL</span>
+            <span class="skill-tag reveal">Docker</span>
+            <span class="skill-tag reveal">AWS</span>
+            <span class="skill-tag reveal">Redis</span>
+            <span class="skill-tag reveal">Git</span>
+            <span class="skill-tag reveal">Bootstrap</span>
+            <span class="skill-tag reveal">REST APIs</span>
+            <span class="skill-tag reveal">CI/CD</span>
+            <span class="skill-tag reveal">jQuery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         ABOUT SECTION
+         ================================================================== -->
+    <section class="section" id="about" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">About Me</div>
+        <h2 class="section__title reveal">
+          Building the Web,<br />One Line at a Time
+        </h2>
+
+        <div class="about__layout">
+          <div>
+            <div class="about__highlight reveal">
+              A seasoned full stack developer who transforms complex problems into elegant, scalable solutions.
+            </div>
+
+            <div class="about__text" style="margin-top: var(--space-lg);">
+              <p class="reveal">
+                I'm Chester Almonte — a Full Stack Web Developer with 7+ years of professional experience. I primarily handle backend development using Laravel and Node.js for API creation, with strong frontend capabilities in HTML, CSS, JavaScript, Vue.js, and Nuxt.js.
+              </p>
+              <p class="reveal">
+                I've created complex systems and websites from the ground up and am comfortable working across the entire stack. From containerizing applications with Docker and deploying on AWS, to building automated testing frameworks and designing real-time dashboards — I bring projects to life end-to-end.
+              </p>
+              <p class="reveal">
+                Beyond the technical, I'm an excellent communicator and problem solver. I constantly strive to stay ahead of the curve, leveraging the latest technologies and best practices to deliver innovative solutions.
+              </p>
+            </div>
+          </div>
+
+          <div class="about__experience">
+            <h3 class="section__label reveal">Experience</h3>
+
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Stealth GMC</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2025 — 2026</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Digital Product Studio</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2024 — 2025</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Appetiser</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2023 — 2024</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Petnet Inc</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2020 — 2023</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">SLI Consulting</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2019 — 2020</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Nusku Inc</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2018 — 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         CONTACT SECTION
+         ================================================================== -->
+    <section class="contact section" id="contact" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">Get in Touch</div>
+
+        <div class="contact__layout">
+          <div>
+            <h2 class="contact__cta reveal">
+              Let's work<br /><span class="accent">together.</span>
+            </h2>
+          </div>
+
+          <div class="contact__details">
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Email</span>
+              <a href="mailto:almonte.s.chester@gmail.com" class="contact__item-value">almonte.s.chester@gmail.com</a>
+            </div>
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Phone</span>
+              <a href="tel:+639274458838" class="contact__item-value">(+63) 927 445 8838</a>
+            </div>
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Location</span>
+              <span class="contact__item-value">Dagupan, Pangasinan, Philippines</span>
+            </div>
+
+            <div class="contact__socials reveal">
+              <a href="https://www.facebook.com/Kachenas/" target="_blank" rel="noopener" class="contact__social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/chester-almonte-17692972/" target="_blank" rel="noopener" class="contact__social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://github.com/Kachenas" target="_blank" rel="noopener" class="contact__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FOOTER
+         ================================================================== -->
+    <footer class="footer" data-scroll-section>
+      <div class="container">
+        <div class="footer__inner">
+          <span class="footer__text">&copy; 2026 Chester Almonte. All rights reserved.</span>
+          <a href="#hero" class="footer__back-top" data-scroll-to>
+            Back to top &uarr;
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- /scrollContainer -->
+
+  <!-- ======================================================================
+       EXTERNAL LIBRARIES (CDN)
+       ====================================================================== -->
+  <!-- Locomotive Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    /* ========================================================================
+       APPLICATION INITIALIZATION
+       ======================================================================== */
+    (() => {
+      'use strict';
+
+      /* ------------------------------------------------------------------
+         1. LOADING SCREEN
+         ------------------------------------------------------------------ */
+      const loader = document.getElementById('loader');
+      const loaderBar = document.getElementById('loaderBar');
+      const loaderLetters = document.querySelectorAll('#loaderText span');
+
+      // Animate loader letters in
+      gsap.fromTo(loaderLetters,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: 'power3.out',
+          delay: 0.2
+        }
+      );
+
+      // Animate progress bar
+      gsap.to(loaderBar, {
+        width: '100%',
+        duration: 1.8,
+        ease: 'power2.inOut',
+        delay: 0.3,
+        onComplete: initApp
+      });
+
+      function initApp() {
+        // Fade out loader
+        gsap.to(loader, {
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.inOut',
+          onComplete: () => {
+            loader.style.display = 'none';
+            // Start all animations after loader is gone
+            initLocomotiveScroll();
+            initCursor();
+            initHeroAnimations();
+            initScrollAnimations();
+            initMarquee();
+            initCountUp();
+            initThemeToggle();
+            initNavigation();
+            initProjectFilter();
+          }
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         2. LOCOMOTIVE SCROLL + SCROLLTRIGGER SYNC
+         ------------------------------------------------------------------ */
+      let locoScroll;
+
+      function initLocomotiveScroll() {
+        locoScroll = new LocomotiveScroll({
+          el: document.getElementById('scrollContainer'),
+          smooth: true,
+          multiplier: 0.8,
+          lerp: 0.07,
+          smartphone: { smooth: true },
+          tablet: { smooth: true, breakpoint: 1024 }
+        });
+
+        // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Sync Locomotive Scroll with ScrollTrigger
+        locoScroll.on('scroll', ScrollTrigger.update);
+
+        ScrollTrigger.scrollerProxy('#scrollContainer', {
+          scrollTop(value) {
+            return arguments.length
+              ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+              : locoScroll.scroll.instance.scroll.y;
+          },
+          getBoundingClientRect() {
+            return {
+              top: 0,
+              left: 0,
+              width: window.innerWidth,
+              height: window.innerHeight
+            };
+          },
+          pinType: document.getElementById('scrollContainer').style.transform
+            ? 'transform'
+            : 'fixed'
+        });
+
+        // Nav scrolled state
+        locoScroll.on('scroll', (args) => {
+          const nav = document.getElementById('nav');
+          if (args.scroll.y > 50) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
+        });
+
+        ScrollTrigger.addEventListener('refresh', () => locoScroll.update());
+        ScrollTrigger.refresh();
+      }
+
+      /* ------------------------------------------------------------------
+         3. CUSTOM CURSOR
+         ------------------------------------------------------------------ */
+      function initCursor() {
+        const cursor = document.getElementById('cursor');
+        const trail = document.getElementById('cursorTrail');
+        let mouseX = 0, mouseY = 0;
+
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        });
+
+        // Smooth trailing with GSAP
+        gsap.ticker.add(() => {
+          gsap.to(cursor, {
+            x: mouseX,
+            y: mouseY,
+            duration: 0.15,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+          gsap.to(trail, {
+            x: mouseX,
+            y: mouseY,
+            duration: 0.4,
+            ease: 'power2.out',
+            overwrite: 'auto'
+          });
+        });
+
+        // Hover effects for interactive elements
+        const hoverTargets = document.querySelectorAll(
+          'a, button, .project-card, .service-item, .skill-tag, .contact__social-link'
+        );
+
+        hoverTargets.forEach((el) => {
+          el.addEventListener('mouseenter', () => {
+            cursor.classList.add('is-hovering');
+            trail.classList.add('is-hovering');
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('is-hovering');
+            trail.classList.remove('is-hovering');
+          });
+        });
+
+        // Hide cursor when leaving window
+        document.addEventListener('mouseleave', () => {
+          gsap.to([cursor, trail], { opacity: 0, duration: 0.2 });
+        });
+        document.addEventListener('mouseenter', () => {
+          gsap.to([cursor, trail], { opacity: 1, duration: 0.2 });
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         4. HERO ENTRANCE ANIMATIONS
+         ------------------------------------------------------------------ */
+      function initHeroAnimations() {
+        const tl = gsap.timeline({ delay: 0.2 });
+
+        // Greeting text
+        tl.from('.hero__greeting', {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        });
+
+        // Name lines — stagger each line
+        tl.from('.hero__title-line span', {
+          y: '100%',
+          duration: 1,
+          ease: 'power4.out',
+          stagger: 0.15
+        }, '-=0.4');
+
+        // Info section
+        tl.from('.hero__info', {
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power3.out'
+        }, '-=0.4');
+
+        // Scroll indicator
+        tl.from('.hero__scroll-indicator', {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: 'power2.out'
+        }, '-=0.3');
+      }
+
+      /* ------------------------------------------------------------------
+         5. SCROLL-TRIGGERED ANIMATIONS
+         ------------------------------------------------------------------ */
+      function initScrollAnimations() {
+        // Reveal animation for all .reveal elements
+        const reveals = document.querySelectorAll('.reveal');
+
+        reveals.forEach((el) => {
+          gsap.fromTo(el,
+            {
+              y: 60,
+              opacity: 0
+            },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                scroller: '#scrollContainer',
+                start: 'top 85%',
+                end: 'top 40%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Staggered animations for service items
+        gsap.utils.toArray('.service-item').forEach((item, i) => {
+          gsap.fromTo(item,
+            { y: 80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              delay: i * 0.1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: item,
+                scroller: '#scrollContainer',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Staggered skill tags
+        gsap.utils.toArray('.skill-tag').forEach((tag, i) => {
+          gsap.fromTo(tag,
+            { y: 30, opacity: 0, scale: 0.9 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              delay: i * 0.03,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '.skills-strip',
+                scroller: '#scrollContainer',
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Staggered experience items
+        gsap.utils.toArray('.experience-item').forEach((item, i) => {
+          gsap.fromTo(item,
+            { x: 40, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.7,
+              delay: i * 0.08,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: item,
+                scroller: '#scrollContainer',
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Project card parallax on scroll
+        gsap.utils.toArray('.project-card__image-wrap').forEach((wrap) => {
+          gsap.fromTo(wrap.querySelector('.project-card__image'),
+            { scale: 1.15 },
+            {
+              scale: 1,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: wrap,
+                scroller: '#scrollContainer',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+              }
+            }
+          );
+        });
+
+        // Contact section reveal
+        gsap.fromTo('.contact__cta',
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.contact__cta',
+              scroller: '#scrollContainer',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      }
+
+      /* ------------------------------------------------------------------
+         6. MARQUEE ANIMATION
+         ------------------------------------------------------------------ */
+      function initMarquee() {
+        const marquee = document.getElementById('marquee');
+        if (!marquee) return;
+
+        // Clone content for seamless loop
+        const content = marquee.innerHTML;
+        marquee.innerHTML += content;
+
+        const totalWidth = marquee.scrollWidth / 2;
+
+        gsap.to(marquee, {
+          x: -totalWidth,
+          duration: 30,
+          ease: 'none',
+          repeat: -1,
+          modifiers: {
+            x: gsap.utils.unitize((x) => parseFloat(x) % totalWidth)
+          }
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         7. COUNT-UP ANIMATION
+         ------------------------------------------------------------------ */
+      function initCountUp() {
+        const counters = document.querySelectorAll('[data-count]');
+
+        counters.forEach((counter) => {
+          const target = parseInt(counter.getAttribute('data-count'), 10);
+          const obj = { val: 0 };
+
+          gsap.to(obj, {
+            val: target,
+            duration: 2,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: counter,
+              scroller: '#scrollContainer',
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            },
+            onUpdate: () => {
+              counter.textContent = Math.round(obj.val) + '+';
+            }
+          });
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         8. THEME TOGGLE (Dark / Light)
+         ------------------------------------------------------------------ */
+      function initThemeToggle() {
+        const toggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check saved preference
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+          html.setAttribute('data-theme', saved);
+        }
+
+        toggle.addEventListener('click', () => {
+          const current = html.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          html.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         9. NAVIGATION
+         ------------------------------------------------------------------ */
+      function initNavigation() {
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const scrollToLinks = document.querySelectorAll('[data-scroll-to]');
+
+        // Mobile menu toggle
+        menuBtn.addEventListener('click', () => {
+          menuBtn.classList.toggle('active');
+          mobileMenu.classList.toggle('active');
+        });
+
+        // Smooth scroll to sections using Locomotive Scroll
+        scrollToLinks.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const target = document.querySelector(targetId);
+
+            if (target && locoScroll) {
+              locoScroll.scrollTo(target, {
+                offset: 0,
+                duration: 1200,
+                easing: [0.25, 0.0, 0.35, 1.0]
+              });
+            }
+
+            // Close mobile menu if open
+            menuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+          });
+        });
+      }
+
+      /* ------------------------------------------------------------------
+         10. PROJECT CATEGORY FILTER
+         ------------------------------------------------------------------ */
+      function initProjectFilter() {
+        const filterBtns = document.querySelectorAll('[data-filter]');
+        const cards = document.querySelectorAll('.project-card[data-category]');
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            cards.forEach((card) => {
+              const category = card.getAttribute('data-category');
+              const shouldShow = filter === 'all' || category === filter;
+
+              if (shouldShow) {
+                card.classList.remove('is-hidden');
+                gsap.fromTo(card,
+                  { opacity: 0, y: 30, scale: 0.97 },
+                  { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power2.out' }
+                );
+              } else {
+                gsap.to(card, {
+                  opacity: 0,
+                  y: -20,
+                  scale: 0.97,
+                  duration: 0.3,
+                  ease: 'power2.in',
+                  onComplete: () => card.classList.add('is-hidden')
+                });
+              }
+            });
+
+            // Update Locomotive Scroll after layout changes
+            setTimeout(() => {
+              if (locoScroll) locoScroll.update();
+            }, 600);
+          });
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+</html>

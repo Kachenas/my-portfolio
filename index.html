@@ -1,954 +1,574 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chester Almonte Portfolio</title>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chester Almonte — Full Stack Developer</title>
+  <meta name="description" content="Chester Almonte — Full Stack Web Developer with 7+ years of experience building scalable applications." />
 
-    <link
-      rel="shortcut icon"
-      href="./assets/images/avatar-profile.webp"
-      type="image/x-icon"
-    />
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- Variable Font: Inter (weight axis 100-900) + Space Grotesk for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <!-- Locomotive Scroll CSS -->
+  <link rel="stylesheet" href="./assets/css/locomotive-scroll.min.css" />
 
-  <body>
-    <main>
-      <!-- SIDEBAR -->
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
 
-      <aside class="sidebar" data-sidebar>
-        <div class="sidebar-info">
-          <figure class="avatar-box">
-            <img
-              src="./assets/images/avatar-profile.webp"
-              alt="Chester Almonte"
-              width="80"
-            />
-          </figure>
+<body>
 
-          <div class="info-content">
-            <h1 class="name" title="Chester Almonte">Chester Almonte</h1>
+  <!-- ======================================================================
+       CUSTOM CURSOR
+       ====================================================================== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
 
-            <p class="title">Full Stack Web developer</p>
-            <br />
+  <!-- ======================================================================
+       LOADING SCREEN
+       ====================================================================== -->
+  <div class="loader" id="loader">
+    <div class="loader__text" id="loaderText">
+      <span>C</span><span>H</span><span>E</span><span>S</span><span>T</span><span>E</span><span>R</span>
+    </div>
+    <div class="loader__bar">
+      <div class="loader__bar-fill" id="loaderBar"></div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       NAVIGATION
+       ====================================================================== -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav__logo" data-scroll-to>Chester<span>.</span></a>
+
+    <div class="nav__links" id="navLinks">
+      <a href="#hero" class="nav__link" data-scroll-to>Home</a>
+      <a href="#work" class="nav__link" data-scroll-to>Work</a>
+      <a href="#services" class="nav__link" data-scroll-to>Services</a>
+      <a href="#about" class="nav__link" data-scroll-to>About</a>
+      <a href="#contact" class="nav__link" data-scroll-to>Contact</a>
+    </div>
+
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+      <button class="nav__menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" class="nav__link" data-scroll-to data-mobile-link>Home</a>
+    <a href="#work" class="nav__link" data-scroll-to data-mobile-link>Work</a>
+    <a href="#services" class="nav__link" data-scroll-to data-mobile-link>Services</a>
+    <a href="#about" class="nav__link" data-scroll-to data-mobile-link>About</a>
+    <a href="#contact" class="nav__link" data-scroll-to data-mobile-link>Contact</a>
+  </div>
+
+  <!-- ======================================================================
+       MAIN SCROLL CONTAINER (Locomotive Scroll)
+       ====================================================================== -->
+  <div data-scroll-container id="scrollContainer">
+
+    <!-- ==================================================================
+         HERO SECTION
+         ================================================================== -->
+    <section class="hero section" id="hero" data-scroll-section>
+      <div class="hero__bg-text" data-scroll data-scroll-speed="-3" data-scroll-direction="horizontal">CA</div>
+
+      <div class="container hero__content">
+        <div class="reveal hero__greeting">Hello, I'm</div>
+
+        <h1 class="hero__name">
+          <span class="hero__title-line"><span>Chester</span></span>
+          <span class="hero__title-line accent"><span>Almonte</span></span>
+        </h1>
+
+        <div class="hero__info reveal">
+          <p class="hero__description">
+            Full Stack Web Developer with 7+ years of experience building
+            scalable applications, designing robust APIs, and crafting
+            seamless user experiences from concept to deployment.
+          </p>
+
+          <div class="hero__stats">
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="7">0</div>
+              <div class="hero__stat-label">Years Exp.</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="30">0</div>
+              <div class="hero__stat-label">Projects</div>
+            </div>
+            <div class="hero__stat">
+              <div class="hero__stat-number" data-count="6">0</div>
+              <div class="hero__stat-label">Companies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll-indicator">
+        <span class="hero__scroll-text">Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         MARQUEE STRIP
+         ================================================================== -->
+    <div class="marquee" data-scroll-section>
+      <div class="marquee__inner" id="marquee">
+        <span class="marquee__item">Full Stack Developer</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Laravel &amp; Vue.js</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">API Architecture</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Cloud &amp; DevOps</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Full Stack Developer</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Laravel &amp; Vue.js</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">API Architecture</span>
+        <span class="marquee__separator">&diams;</span>
+        <span class="marquee__item">Cloud &amp; DevOps</span>
+        <span class="marquee__separator">&diams;</span>
+      </div>
+    </div>
+
+    <!-- ==================================================================
+         FEATURED WORK
+         ================================================================== -->
+    <section class="work section" id="work" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">Selected Work</div>
+        <h2 class="section__title reveal">
+          Featured<br />Projects
+        </h2>
+
+        <!-- Category Filter -->
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web development">Web Development</button>
+          <button class="filter-btn" data-filter="web design">Web Design</button>
+          <button class="filter-btn" data-filter="wordpress">WordPress</button>
+        </div>
+
+        <div class="project-grid project-grid--featured" id="projectGrid">
+
+          <!-- 01 — Ecommerce -->
+          <div class="project-card project-card--wide reveal" data-category="web development" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 1.png" alt="Ecommerce Platform" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">01</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Ecommerce</h3>
+                <p class="project-card__desc">Full-stack e-commerce solution with inventory management, payment processing, and real-time order tracking.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">Vue.js</span>
+                  <span class="project-card__tag">MySQL</span>
+                  <span class="project-card__tag">REST API</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
           </div>
 
-          <button class="info_more-btn" data-sidebar-btn>
-            <span>Show Contacts</span>
+          <!-- 02 — Loan System -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 2.png" alt="Loan System" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">02</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Loan System</h3>
+                <p class="project-card__desc">Financial platform with dynamic reporting, third-party remittance API integrations, and ERP modules for banking operations.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Vue.js</span>
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">PostgreSQL</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
 
-            <ion-icon name="chevron-down"></ion-icon>
-          </button>
+          <!-- 03 — SneakerThirst -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 3.png" alt="SneakerThirst" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">03</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">SneakerThirst</h3>
+                <p class="project-card__desc">E-commerce web application for sneaker enthusiasts with catalog browsing, cart management, and checkout flow.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">JavaScript</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">MySQL</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 04 — BandaPinoizze -->
+          <div class="project-card reveal" data-category="web development" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 4.png" alt="BandaPinoizze" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">04</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">BandaPinoizze</h3>
+                <p class="project-card__desc">Community-driven web platform featuring dynamic content management and interactive user experiences.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">Laravel</span>
+                  <span class="project-card__tag">JavaScript</span>
+                  <span class="project-card__tag">Bootstrap</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 05 — Simple Reading -->
+          <div class="project-card reveal" data-category="web design" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 5.png" alt="Simple Reading" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">05</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Simple Reading</h3>
+                <p class="project-card__desc">Clean, minimal reading interface designed for distraction-free content consumption with elegant typography.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">UI/UX</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 06 — Kalerki -->
+          <div class="project-card reveal" data-category="web design" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 6.png" alt="Kalerki" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">06</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Kalerki</h3>
+                <p class="project-card__desc">Modern web design project focused on striking visual layouts and responsive design across all viewports.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">JavaScript</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 07 — Los Angeles Mountain Hike -->
+          <div class="project-card project-card--wide reveal" data-category="web design" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 7.png" alt="Los Angeles Mountain Hike" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">07</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Los Angeles Mountain Hike</h3>
+                <p class="project-card__desc">Immersive landing page design with scenic photography, smooth scroll interactions, and adventure-driven storytelling.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">HTML</span>
+                  <span class="project-card__tag">CSS</span>
+                  <span class="project-card__tag">Design</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 08 — Bloggerslane -->
+          <div class="project-card reveal" data-category="wordpress" data-scroll data-scroll-speed="1.5">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 8.png" alt="Bloggerslane" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">08</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Bloggerslane</h3>
+                <p class="project-card__desc">WordPress blogging platform with custom theme development, optimized content delivery, and responsive layouts.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">WordPress</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">CSS</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
+          <!-- 09 — Kachenas -->
+          <div class="project-card reveal" data-category="wordpress" data-scroll data-scroll-speed="1">
+            <div class="project-card__image-wrap">
+              <img class="project-card__image" src="./assets/images/project-image/project 9.png" alt="Kachenas" loading="lazy" />
+              <div class="project-card__overlay"></div>
+            </div>
+            <div class="project-card__content">
+              <span class="project-card__number">09</span>
+              <div class="project-card__info">
+                <h3 class="project-card__title">Kachenas</h3>
+                <p class="project-card__desc">Personal WordPress site with custom theme, portfolio showcase, and content management system integration.</p>
+                <div class="project-card__tags">
+                  <span class="project-card__tag">WordPress</span>
+                  <span class="project-card__tag">PHP</span>
+                  <span class="project-card__tag">JavaScript</span>
+                </div>
+              </div>
+              <span class="project-card__arrow">&nearr;</span>
+            </div>
+          </div>
+
         </div>
-
-        <div class="sidebar-info_more">
-          <div class="separator"></div>
-
-          <ul class="contacts-list">
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="mail-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Email</p>
-
-                <a
-                  href="mailto:almonte.s.chester@gmail.com"
-                  class="contact-link"
-                  >almonte.s.chester@gmail.com</a
-                >
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="phone-portrait-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Phone</p>
-
-                <a href="tel:+12133522795" class="contact-link"
-                  >(+63) 9274458838</a
-                >
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="calendar-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Birthday</p>
-
-                <time datetime="1982-06-23">July 4, 1992</time>
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="location-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Location</p>
-
-                <address>Dagupan, Pangasinan, PHILIPPINES</address>
-              </div>
-            </li>
-          </ul>
-
-          <div class="separator"></div>
-
-          <ul class="social-list">
-            <li class="social-item">
-              <a href="https://www.facebook.com/Kachenas/" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li class="social-item">
-              <a
-                href="https://www.linkedin.com/in/chester-almonte-17692972/"
-                class="social-link"
-              >
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-            <li class="social-item">
-              <a href="https://github.com/Kachenas" class="social-link">
-                <ion-icon name="logo-github"></ion-icon>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <!-- main-content -->
-
-      <div class="main-content">
-        <!-- NAVBAR -->
-
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link>About</button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Resume</button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Portfolio</button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Contact</button>
-            </li>
-          </ul>
-        </nav>
-
-        <!-- ABOUT -->
-
-        <article class="about active" data-page="about">
-          <header>
-            <h2 class="h2 article-title">About me</h2>
-          </header>
-
-          <section class="about-text">
-            <p>
-              I'm Chester Almonte and I am a Web Developer that has 7+ years of
-              Working Experience in my field. I mainly handle backend
-              development which uses Laravel / Node JS for the creation of API,
-              but also have a working knowledge of implementing frontend
-              technologies such as HTML, CSS, Bootstrap, JQuery, Javascript and
-              Vue 3.
-            </p>
-
-            <p>
-              I have created complex systems and websites from the ground up and
-              I am comfortable working with both front-end and back-end
-              technologies. In addition to my technical skills, I am an
-              excellent communicator and problem solver.
-            </p>
-
-            <p>
-              I am constantly striving to stay ahead of the curve. My strong
-              problem-solving and communication skills have enabled me to
-              successfully collaborate with others on large-scale projects.
-            </p>
-
-            <p>
-              I have a proven track record of developing innovative solutions to
-              complex problems and working collaboratively with designers,
-              developers, and other stakeholders to ensure projects are
-              successful. I understand the importance of utilizing the latest
-              technologies and trends in web development.
-            </p>
-          </section>
-
-          <!-- SERVICE -->
-
-          <section class="service">
-            <h3 class="h3 service-title">What i'm doing</h3>
-
-            <ul class="service-list">
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icon-design.svg
-                "
-                    alt="design icon"
-                    width="40"
-                  />
-                </div>
-
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Web design</h4>
-
-                  <p class="service-item-text">
-                    The most modern and high-quality design made at a
-                    professional level.
-                  </p>
-                </div>
-              </li>
-
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icon-dev.svg"
-                    alt="Web development icon"
-                    width="40"
-                  />
-                </div>
-
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Web development</h4>
-
-                  <p class="service-item-text">
-                    High-quality development of sites at the professional level.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </section>
-        </article>
-
-        <!-- RESUME -->
-
-        <article class="resume" data-page="resume">
-          <header>
-            <h2 class="h2 article-title">Resume</h2>
-          </header>
-
-          <section class="timeline">
-            <div class="title-wrapper">
-              <div class="icon-box">
-                <ion-icon name="book-outline"></ion-icon>
-              </div>
-
-              <h3 class="h3">Education</h3>
-            </div>
-
-            <ol class="timeline-list">
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Colegio de Dagupan</h4>
-
-                <span>2008-2012</span>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Dagupan City National High School
-                </h4>
-
-                <span>2004-2008</span>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  College of St. Michael the Archangel
-                </h4>
-
-                <span>1996 — 2004</span>
-              </li>
-            </ol>
-          </section>
-
-          <section class="timeline">
-            <div class="title-wrapper">
-              <div class="icon-box">
-                <ion-icon name="book-outline"></ion-icon>
-              </div>
-
-              <h3 class="h3">Experience</h3>
-            </div>
-
-            <ol class="timeline-list">
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - Stealth GMC
-                </h4>
-
-                <span>10/2025 - 02/2026</span>
-
-                <p class="timeline-text">
-                  - Containerized applications using Docker and deployed
-                  scalable, production-ready services on AWS ECS
-                </p>
-                <p class="timeline-text">
-                  - Architected and implemented end-to-end CI/CD pipelines using
-                  GitHub Actions, enabling seamless deployment from development
-                  to production (S3, ECR, ECS, ALB)
-                </p>
-                <p class="timeline-text">
-                  - Designed and built a full inventory management system
-                  covering procurement to sales, including real- time dashboards
-                  and reporting features
-                </p>
-                <p class="timeline-text">
-                  - Integrated Redis for caching and performance optimization,
-                  improving system responsiveness and scalability
-                </p>
-                <p class="timeline-text">
-                  - Ensured high availability and reliability through load
-                  balancing (ALB) and optimized cloud infrastructure design
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - Digital Product Studio
-                </h4>
-
-                <span>09/2024 - 07/2025</span>
-
-                <p class="timeline-text">
-                  - Designed and developed scalable RESTful APIs supporting
-                  internal systems and third-party integrations
-                </p>
-                <p class="timeline-text">
-                  - Built automated notification systems (email services) to
-                  enhance user engagement and streamline onboarding processes
-                </p>
-                <p class="timeline-text">
-                  - Implemented secure data handling practices, including data
-                  anonymization and environment- based configuration management
-                </p>
-                <p class="timeline-text">
-                  - Improved code quality and maintainability by applying SOLID
-                  principles and DRY practices across the codebase
-                </p>
-                <p class="timeline-text">
-                  - Collaborated with cross-functional teams to deliver robust
-                  backend solutions aligned with business requirements
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - Appetiser
-                </h4>
-
-                <span>09/2023 - 07/2024</span>
-
-                <p class="timeline-text">
-                  - Developed and implemented an automated testing framework,
-                  reducing manual testing time by 50% and improving release
-                  reliability
-                </p>
-                <p class="timeline-text">
-                  - Translated Figma designs into high-quality, production-ready
-                  applications using Vue.js and Nuxt.js, ensuring responsive and
-                  user-friendly interfaces
-                </p>
-                <p class="timeline-text">
-                  - Designed, developed, and maintained scalable backend APIs
-                  using Laravel, supporting seamless integration with frontend
-                  systems
-                </p>
-                <p class="timeline-text">
-                  - Deployed and managed cloud infrastructure on AWS (EC2, S3,
-                  CodeDeploy), enabling reliable and efficient application
-                  delivery
-                </p>
-                <p class="timeline-text">
-                  - Contributed to multiple cross-functional projects,
-                  collaborating with developers, designers, and stakeholders to
-                  deliver high-quality software solutions
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - Petnet Inc
-                </h4>
-
-                <span>07/2020 - 04/2023</span>
-
-                <p class="timeline-text">
-                  - Developed and maintained full-stack web applications using
-                  Laravel and modern JavaScript frameworks
-                </p>
-                <p class="timeline-text">
-                  - Designed and implemented automated reporting systems,
-                  reducing manual workload and improving operational efficiency
-                </p>
-                <p class="timeline-text">
-                  - Built dynamic modules for pricing, commission management,
-                  and transaction limits with approval workflows
-                </p>
-                <p class="timeline-text">
-                  - Refactored legacy codebase to address security
-                  vulnerabilities identified through VAPT assessments
-                </p>
-                <p class="timeline-text">
-                  - Improved system performance and maintainability through code
-                  optimization and modular architecture
-                </p>
-                <p class="timeline-text">
-                  - Collaborated with cross-functional teams to deliver system
-                  enhancements and new features
-                </p>
-                <p class="timeline-text">
-                  - Provided technical consultation to stakeholders on system
-                  capabilities and improvements
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - SLI Consulting Inc
-                </h4>
-
-                <span>03/2019 — 06/2020</span>
-
-                <p class="timeline-text">
-                  - Developed a Loan Information System using Vue.js (frontend)
-                  and Laravel (backend)
-                </p>
-                <p class="timeline-text">
-                  - Built reusable frontend components and improved UI
-                  responsiveness using Vue.js
-                </p>
-                <p class="timeline-text">
-                  - Designed and implemented backend modules for ERP systems
-                  including user, bank, and department management
-                </p>
-                <p class="timeline-text">
-                  - Integrated third-party remittance APIs to enable external
-                  financial transactions
-                </p>
-                <p class="timeline-text">
-                  - Created reporting systems with dynamic filters (date,
-                  location, product)
-                </p>
-                <p class="timeline-text">
-                  - Developed SQL scripts for reporting and analytics using
-                  PostgreSQL
-                </p>
-                <p class="timeline-text">
-                  - Built inventory management modules using JavaScript, jQuery,
-                  and AJAX
-                </p>
-                <p class="timeline-text">
-                  - Collaborated with product owners to gather requirements and
-                  deliver data-driven solutions
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  SQL Programmer - SLI Consulting Inc
-                </h4>
-
-                <span>07/2018 — 02/2019</span>
-
-                <p class="timeline-text">
-                  - Performed product retrievals and insertion. Prepared scripts
-                  for reports generation, and created a module for an inventory
-                  system.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer - Nusku Inc
-                </h4>
-
-                <span>03/2018 — 07/2018</span>
-
-                <p class="timeline-text">
-                  - Converted design mockups into responsive WordPress themes
-                  using HTML, CSS, and JavaScript
-                </p>
-                <p class="timeline-text">
-                  - Collaborated with clients to define project requirements and
-                  deliver functional web solutions
-                </p>
-              </li>
-            </ol>
-
-            <button class="form-btn">
-              <ion-icon name="paper-plane"></ion-icon>
-              <span
-                ><a
-                  href="https://drive.google.com/file/d/141cOJLB7ru_8KBZSIZ99WL7Gv1XEnbMB/view?usp=drive_link"
-                  attributes-list
-                  download
-                  >Download Resume
-                </a>
-              </span>
-            </button>
-          </section>
-
-          <section class="skill">
-            <h3 class="h3 skills-title">My skills</h3>
-
-            <div class="grid-container">
-              <div class="title-wrapper-skills">
-                <h5 class="h5">HTML</h5>
-                <img
-                  src="./assets/images/logos/html.png"
-                  alt="html"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">CSS</h5>
-                <img
-                  src="./assets/images/logos/css.png"
-                  alt="css"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">Javascript</h5>
-                <img
-                  src="./assets/images/logos/javascript.png"
-                  alt="javascript"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">PHP</h5>
-                <img
-                  src="./assets/images/logos/php.png"
-                  alt="php"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">Bootstrap</h5>
-                <img
-                  src="./assets/images/logos/bootstrap.png"
-                  alt="bootstrap"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">Git</h5>
-                <img
-                  src="./assets/images/logos/git.png"
-                  alt="git"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">MySQL</h5>
-                <img
-                  src="./assets/images/logos/mysql.png"
-                  alt="mysql"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">Node</h5>
-                <img
-                  src="./assets/images/logos/node.png"
-                  alt="node"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-
-              <div class="title-wrapper-skills">
-                <h5 class="h5">Vue</h5>
-                <img
-                  src="./assets/images/logos/vue.png"
-                  alt="vue"
-                  loading="lazy"
-                  class="skill-img"
-                />
-              </div>
-            </div>
-          </section>
-        </article>
-
-        <!-- PORTFOLIO -->
-
-        <article class="portfolio" data-page="portfolio">
-          <header>
-            <h2 class="h2 article-title">Portfolio</h2>
-          </header>
-
-          <section class="projects">
-            <ul class="filter-list">
-              <li class="filter-item">
-                <button class="active" data-filter-btn>All</button>
-              </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Web design</button>
-              </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Wordpress</button>
-              </li>
-
-              <li class="filter-item">
-                <button data-filter-btn>Web development</button>
-              </li>
-            </ul>
-
-            <div class="filter-select-box">
-              <button class="filter-select" data-select>
-                <div class="select-value" data-selecct-value>
-                  Select category
-                </div>
-
-                <div class="select-icon">
-                  <ion-icon name="chevron-down"></ion-icon>
-                </div>
-              </button>
-
-              <ul class="select-list">
-                <li class="select-item">
-                  <button data-select-item>All</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Web design</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Wordpress</button>
-                </li>
-
-                <li class="select-item">
-                  <button data-select-item>Web development</button>
-                </li>
-              </ul>
-            </div>
-
-            <ul class="project-list">
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 1.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Ecommerce</h3>
-
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 2.png"
-                      alt="loan system"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Loan System</h3>
-
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web design"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 5.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Simple Reading</h3>
-
-                  <p class="project-category">Web design</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="wordpress"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 8.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Bloggerslane</h3>
-
-                  <p class="project-category">Wordpress</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web design"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 6.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Kalerki</h3>
-
-                  <p class="project-category">Web design</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web design"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 7.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Los Angeles Mountain Hike</h3>
-
-                  <p class="project-category">Web design</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 4.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">BandaPinoizze</h3>
-
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="wordpress"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 9.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">Kachenas</h3>
-
-                  <p class="project-category">Wordpress</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-
-                    <img
-                      src="./assets/images/project-image/project 3.png"
-                      alt="ecommerce"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <h3 class="project-title">SneakerThirst</h3>
-
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </article>
-
-        <!-- CONTACT -->
-
-        <article class="contact" data-page="contact">
-          <header>
-            <h2 class="h2 article-title">Contact</h2>
-          </header>
-
-          <section class="contact-form">
-            <h3 class="h3 form-title">Contact Form</h3>
-
-            <form action="#" class="form" data-form>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="fullname"
-                  class="form-input"
-                  placeholder="Full name"
-                  required
-                  data-form-input
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="Email address"
-                  required
-                  data-form-input
-                />
-              </div>
-
-              <textarea
-                name="message"
-                class="form-input"
-                placeholder="Your Message"
-                required
-                data-form-input
-              ></textarea>
-
-              <button class="form-btn" type="submit" disabled data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
-                <span>Send Message</span>
-              </button>
-            </form>
-          </section>
-        </article>
       </div>
-    </main>
+    </section>
 
-    <!-- custom js link -->
-    <script type="module" src="./assets/js/script.js"></script>
-    <script src="./assets/js/tsparticles.bundle.min.js"></script>
+    <!-- ==================================================================
+         SERVICES SECTION
+         ================================================================== -->
+    <section class="services section" id="services" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">What I Do</div>
+        <h2 class="section__title reveal">
+          Services &amp;<br />Expertise
+        </h2>
+      </div>
 
-    <!-- ionicon link -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-  </body>
+      <div class="container">
+        <div class="services__grid">
+
+          <div class="service-item reveal">
+            <div class="service-item__number">01</div>
+            <h3 class="service-item__title">Backend Development</h3>
+            <p class="service-item__desc">Scalable APIs and server-side architecture using Laravel, Node.js, and modern backend patterns. SOLID principles, clean code, and performance-first.</p>
+            <div class="service-item__icon">&lbrace;/&rbrace;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">02</div>
+            <h3 class="service-item__title">Frontend Engineering</h3>
+            <p class="service-item__desc">Building responsive, interactive interfaces with Vue.js, Nuxt.js, and modern JavaScript. Pixel-perfect translation from Figma to production.</p>
+            <div class="service-item__icon">&lt;/&gt;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">03</div>
+            <h3 class="service-item__title">Cloud &amp; DevOps</h3>
+            <p class="service-item__desc">Docker containerization, AWS deployment (ECS, EC2, S3), CI/CD pipelines with GitHub Actions, and infrastructure optimization with Redis caching.</p>
+            <div class="service-item__icon">&clubs;</div>
+          </div>
+
+          <div class="service-item reveal">
+            <div class="service-item__number">04</div>
+            <h3 class="service-item__title">Web Design</h3>
+            <p class="service-item__desc">Modern, high-quality interface design at a professional level. Clean layouts, intuitive UX, and responsive design that works across all devices.</p>
+            <div class="service-item__icon">&Delta;</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Skills Tags Strip -->
+      <div class="skills-strip" data-scroll-section>
+        <div class="container">
+          <div class="skills-strip__list">
+            <span class="skill-tag reveal">HTML5</span>
+            <span class="skill-tag reveal">CSS3</span>
+            <span class="skill-tag reveal">JavaScript</span>
+            <span class="skill-tag reveal">PHP</span>
+            <span class="skill-tag reveal">Laravel</span>
+            <span class="skill-tag reveal">Vue.js</span>
+            <span class="skill-tag reveal">Nuxt.js</span>
+            <span class="skill-tag reveal">Node.js</span>
+            <span class="skill-tag reveal">MySQL</span>
+            <span class="skill-tag reveal">PostgreSQL</span>
+            <span class="skill-tag reveal">Docker</span>
+            <span class="skill-tag reveal">AWS</span>
+            <span class="skill-tag reveal">Redis</span>
+            <span class="skill-tag reveal">Git</span>
+            <span class="skill-tag reveal">Bootstrap</span>
+            <span class="skill-tag reveal">REST APIs</span>
+            <span class="skill-tag reveal">CI/CD</span>
+            <span class="skill-tag reveal">jQuery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         ABOUT SECTION
+         ================================================================== -->
+    <section class="section" id="about" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">About Me</div>
+        <h2 class="section__title reveal">
+          Building the Web,<br />One Line at a Time
+        </h2>
+
+        <div class="about__layout">
+          <div>
+            <div class="about__highlight reveal">
+              A seasoned full stack developer who transforms complex problems into elegant, scalable solutions.
+            </div>
+
+            <div class="about__text" style="margin-top: var(--space-lg);">
+              <p class="reveal">
+                I'm Chester Almonte — a Full Stack Web Developer with 7+ years of professional experience. I primarily handle backend development using Laravel and Node.js for API creation, with strong frontend capabilities in HTML, CSS, JavaScript, Vue.js, and Nuxt.js.
+              </p>
+              <p class="reveal">
+                I've created complex systems and websites from the ground up and am comfortable working across the entire stack. From containerizing applications with Docker and deploying on AWS, to building automated testing frameworks and designing real-time dashboards — I bring projects to life end-to-end.
+              </p>
+              <p class="reveal">
+                Beyond the technical, I'm an excellent communicator and problem solver. I constantly strive to stay ahead of the curve, leveraging the latest technologies and best practices to deliver innovative solutions.
+              </p>
+            </div>
+          </div>
+
+          <div class="about__experience">
+            <h3 class="section__label reveal">Experience</h3>
+
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Stealth GMC</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2025 — 2026</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Digital Product Studio</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2024 — 2025</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Appetiser</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2023 — 2024</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Petnet Inc</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2020 — 2023</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">SLI Consulting</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2019 — 2020</span>
+            </div>
+            <div class="experience-item reveal">
+              <span class="experience-item__company">Nusku Inc</span>
+              <span class="experience-item__role">Web Developer</span>
+              <span class="experience-item__date">2018 — 2018</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         CONTACT SECTION
+         ================================================================== -->
+    <section class="contact section" id="contact" data-scroll-section>
+      <div class="container">
+        <div class="section__label reveal">Get in Touch</div>
+
+        <div class="contact__layout">
+          <div>
+            <h2 class="contact__cta reveal">
+              Let's work<br /><span class="accent">together.</span>
+            </h2>
+          </div>
+
+          <div class="contact__details">
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Email</span>
+              <a href="mailto:almonte.s.chester@gmail.com" class="contact__item-value">almonte.s.chester@gmail.com</a>
+            </div>
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Phone</span>
+              <a href="tel:+639274458838" class="contact__item-value">(+63) 927 445 8838</a>
+            </div>
+            <div class="contact__item reveal">
+              <span class="contact__item-label">Location</span>
+              <span class="contact__item-value">Dagupan, Pangasinan, Philippines</span>
+            </div>
+
+            <div class="contact__socials reveal">
+              <a href="https://www.facebook.com/Kachenas/" target="_blank" rel="noopener" class="contact__social-link" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/chester-almonte-17692972/" target="_blank" rel="noopener" class="contact__social-link" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="https://github.com/Kachenas" target="_blank" rel="noopener" class="contact__social-link" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         FOOTER
+         ================================================================== -->
+    <footer class="footer" data-scroll-section>
+      <div class="container">
+        <div class="footer__inner">
+          <span class="footer__text">&copy; 2026 Chester Almonte. All rights reserved.</span>
+          <a href="#hero" class="footer__back-top" data-scroll-to>
+            Back to top &uarr;
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- /scrollContainer -->
+
+  <!-- ======================================================================
+       LIBRARIES
+       ====================================================================== -->
+  <!-- Locomotive Scroll -->
+  <script src="./assets/js/locomotive-scroll.min.js"></script>
+  <!-- GSAP Core -->
+  <script src="./assets/js/gsap.min.js"></script>
+  <!-- GSAP ScrollTrigger -->
+  <script src="./assets/js/ScrollTrigger.min.js"></script>
+
+  <!-- Custom App Script -->
+  <script src="./assets/js/app.js"></script>
+
+</body>
 </html>
